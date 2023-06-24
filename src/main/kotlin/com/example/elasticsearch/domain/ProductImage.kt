@@ -8,7 +8,6 @@ class ProductImage(
     @Column(name = "product_image_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
-
     var url: String,
 
     @ManyToOne(fetch = FetchType.LAZY)

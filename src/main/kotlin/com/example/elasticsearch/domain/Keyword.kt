@@ -1,19 +1,21 @@
 package com.example.elasticsearch.domain
 
+import com.example.elasticsearch.domain.enums.ProductKeyword
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
-import java.time.LocalDateTime
+import jakarta.persistence.OneToMany
 
 @Entity
-class Event(
+class Keyword(
     @Id
-    @Column(name = "event_id")
+    @Column(name = "keyword_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
-    var title: String,
-    var startDateTime: LocalDateTime,
-    var endDateTime: LocalDateTime
+    var keyword: String,
+
+    @OneToMany(mappedBy = "keyword")
+    var productKeyword: List<ProductKeyword> = mutableListOf()
 )
